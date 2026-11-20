@@ -1,0 +1,10 @@
+
+diet(diabetes, 'Low sugar foods and vegetables').
+diet(obesity, 'Fruits and low calorie foods').
+diet(anemia, 'Iron rich foods and green vegetables').
+diet(fever, 'Fluids and easily digestible foods').
+
+suggest_diet(Disease) :-
+    diet(Disease, Food),
+    write('Suggested Diet: '),
+    write(Food).
