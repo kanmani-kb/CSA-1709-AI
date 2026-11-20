@@ -1,0 +1,48 @@
+
+edge(a, b).
+edge(a, c).
+edge(b, d).
+edge(b, e).
+edge(c, f).
+edge(d, g).
+edge(e, g).
+edge(f, g).
+
+h(a, 6).
+h(b, 4).
+h(c, 3).
+h(d, 2).
+h(e, 5).
+h(f, 1).
+h(g, 0).
+
+best_first(Start, Goal) :-
+    search([[Start]], Goal, Path),
+    reverse(Path, Result),
+    write('Path: '),
+    write(Result).
+
+search([[Goal|Rest]|_], Goal, [Goal|Rest]).
+
+search([Path|Paths], Goal, Result) :-
+    Path = [Current|_],
+    findall([Next|Path],
+        (edge(Current, Next),
+         \+ member(Next, Path)),
+        NewPaths),
+    append(Paths, NewPaths, AllPaths),
+    sort_paths(AllPaths, Sorted),
+    search(Sorted, Goal, Result).
+
+sort_paths(Paths, Sorted) :-
+    findall(H-P,
+        (member(P, Paths),
+         P = [Node|_],
+         h(Node, H)),
+        Pairs),
+    keysort(Pairs, Ordered),
+    remove_keys(Ordered, Sorted).
+
+remove_keys([], []).
+remove_keys([_-P|T], [P|R]) :-
+    remove_keys(T, R).
