@@ -1,0 +1,14 @@
+
+fact(rain).
+fact(cloudy).
+
+wet_ground :-
+    fact(rain).
+
+carry_umbrella :-
+    fact(rain).
+
+stay_inside :-
+    wet_ground,
+    fact(cloudy).
+
