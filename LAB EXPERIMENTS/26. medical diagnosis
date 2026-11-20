@@ -1,0 +1,22 @@
+
+symptom(ravi, fever).
+symptom(ravi, cough).
+symptom(ravi, headache).
+
+disease(X, flu) :-
+    symptom(X, fever),
+    symptom(X, cough).
+
+disease(X, cold) :-
+    symptom(X, cough),
+    symptom(X, sneezing).
+
+disease(X, malaria) :-
+    symptom(X, fever),
+    symptom(X, chills).
+
+diagnose(X) :-
+    disease(X, D),
+    write('Possible Disease: '),
+    write(D),
+    nl.
