@@ -1,0 +1,20 @@
+
+initial_state(at_door, on_floor, at_window, has_not).
+
+move(state(at_door, on_floor, at_window, has_not),
+     state(at_middle, on_floor, at_window, has_not)).
+
+move(state(at_middle, on_floor, at_window, has_not),
+     state(at_middle, on_box, at_window, has_not)).
+
+move(state(at_middle, on_box, at_window, has_not),
+     state(at_middle, on_box, at_middle, has_not)).
+
+move(state(at_middle, on_box, at_middle, has_not),
+     state(at_middle, on_box, at_middle, has)).
+
+can_get(state(_, _, _, has)).
+
+can_get(State1) :-
+    move(State1, State2),
+    can_get(State2).
