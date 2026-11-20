@@ -1,0 +1,20 @@
+
+fact(rain).
+fact(cloudy).
+
+rule(wet_ground) :-
+    fact(rain).
+
+rule(carry_umbrella) :-
+    fact(rain).
+
+rule(stay_inside) :-
+    fact(wet_ground),
+    fact(cloudy).
+
+known(X) :-
+    fact(X).
+
+known(X) :-
+    rule(X).
+
