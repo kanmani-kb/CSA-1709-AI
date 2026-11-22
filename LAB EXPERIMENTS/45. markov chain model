@@ -1,0 +1,14 @@
+import random
+
+states = ["Sunny", "Rainy"]
+
+transition = {
+    "Sunny": ["Sunny", "Rainy"],
+    "Rainy": ["Sunny", "Rainy"]
+}
+
+current = "Sunny"
+
+for i in range(10):
+    print(current)
+    current = random.choice(transition[current])
