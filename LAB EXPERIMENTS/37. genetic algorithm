@@ -1,0 +1,28 @@
+import random
+
+def fitness(x):
+    return x * x
+
+population = [random.randint(0, 10) for i in range(10)]
+
+for generation in range(20):
+    population.sort(key=fitness, reverse=True)
+
+    new_population = population[:2]
+
+    while len(new_population) < 10:
+        p1 = random.choice(population[:5])
+        p2 = random.choice(population[:5])
+
+        child = (p1 + p2) // 2
+
+        if random.random() < 0.2:
+            child = random.randint(0, 10)
+
+        new_population.append(child)
+
+    population = new_population
+
+best = max(population, key=fitness)
+print("Best Solution:", best)
+print("Fitness:", fitness(best))
