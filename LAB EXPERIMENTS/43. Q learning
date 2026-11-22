@@ -1,0 +1,27 @@
+import numpy as np
+import random
+
+Q = np.zeros((5, 2))
+
+for episode in range(1000):
+    state = 0
+
+    while state != 4:
+        if random.random() < 0.2:
+            action = random.randint(0, 1)
+        else:
+            action = np.argmax(Q[state])
+
+        next_state = min(state + 1, 4) if action == 1 else max(state - 1, 0)
+
+        reward = 10 if next_state == 4 else -1
+
+        Q[state, action] += 0.1 * (
+            reward + 0.9 * np.max(Q[next_state]) - Q[state, action]
+        )
+
+        state = next_state
+
+print("Q Table:")
+print(Q)
+print("Best Action from State 0:", np.argmax(Q[0]))
