@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Web Blog</title>
+</head>
+<body>
+    <h1>Welcome to My Blog</h1>
+    <h2>About Technology</h2>
+    <p>This blog shares information about technology.</p>
+    <a href="https://www.google.com" title="Visit Google">Click Here</a>
+</body>
+</html>
