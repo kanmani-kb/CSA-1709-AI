@@ -1,0 +1,12 @@
+while True:
+    message = input("You: ").lower()
+
+    if message == "hello":
+        print("Bot: Hello! How are you?")
+    elif message == "how are you":
+        print("Bot: I am fine!")
+    elif message == "bye":
+        print("Bot: Goodbye!")
+        break
+    else:
+        print("Bot: Sorry, I don't understand.")
