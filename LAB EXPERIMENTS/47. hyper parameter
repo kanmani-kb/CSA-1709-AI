@@ -1,0 +1,23 @@
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import GridSearchCV
+from sklearn.datasets import load_iris
+
+data = load_iris()
+X = data.data
+y = data.target
+
+parameters = {
+    'max_depth': [2, 3, 4, 5],
+    'criterion': ['gini', 'entropy']
+}
+
+model = GridSearchCV(
+    DecisionTreeClassifier(),
+    parameters,
+    cv=3
+)
+
+model.fit(X, y)
+
+print("Best Parameters:", model.best_params_)
+print("Best Accuracy:", model.best_score_)
